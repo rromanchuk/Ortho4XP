@@ -1186,8 +1186,9 @@ class Ortho4XP_Earth_Preview(tk.Toplevel):
                                 else:
                                     self.canvas.itemconfig(self.dico_tiles_done[(lat,lon)][1],font=('Helvetica','12','bold underline'))
         elif self.grouped and os.path.isdir(os.path.join(self.working_dir,'Earth nav data')):
-            for dir_name in os.listdir(os.path.join(self.working_dir,'Earth nav data')):
-                for file_name in os.listdir(os.path.join(self.working_dir,'Earth nav data',dir_name)):
+            
+            for dir_name in filter(lambda f: not f.startswith('.'), os.listdir(os.path.join(self.working_dir,'Earth nav data'))):
+                for file_name in filter(lambda f: not f.startswith('.'), os.listdir(os.path.join(self.working_dir,'Earth nav data',dir_name))):
                     try:
                         lat=int(file_name[0:3])
                         lon=int(file_name[3:7])

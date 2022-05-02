@@ -7,11 +7,9 @@ import itertools
 from math import sqrt
 import array
 import numpy
-try:
-    import gdal
-    has_gdal=True
-except:
-    has_gdal=False
+from osgeo import gdal
+has_gdal=True
+
 from PIL import Image
 import O4_UI_Utils as UI
 import O4_File_Names as FNAMES

@@ -22,5 +22,5 @@ for f in os.listdir():
     (latmin,lonmax)=gtile_to_wgs84(til_x_left+16,til_y_top+16,zoomlevel)
     (xmin,ymin)=pyproj.transform(geographic,webmercator,lonmin,latmin)
     (xmax,ymax)=pyproj.transform(geographic,webmercator,lonmax,latmax)
-    os.system("gdal_translate -of Gtiff -co COMPRESS=JPEG -a_ullr "+str(xmin)+" "+str(ymax)+" "+str(xmax)+" "+str(ymin)+" -a_srs epsg:3857 "+f+" "+f.replace(".jpg","_tmp.tif"))
-    os.system("gdalwarp -of Gtiff -co COMPRESS=JPEG -s_srs epsg:3857 -t_srs epsg:4326 -ts 4096 4096 -rb "+f.replace(".jpg","_tmp.tif")+" "+f.replace(".jpg",".tif"))
+    os.system("/usr/local/Cellar/gdal/3.2.2/bin/gdal_translate -of Gtiff -co COMPRESS=JPEG -a_ullr "+str(xmin)+" "+str(ymax)+" "+str(xmax)+" "+str(ymin)+" -a_srs epsg:3857 "+f+" "+f.replace(".jpg","_tmp.tif"))
+    os.system("/usr/local/Cellar/gdal/3.2.2/bin/gdalwarp -of Gtiff -co COMPRESS=JPEG -s_srs epsg:3857 -t_srs epsg:4326 -ts 4096 4096 -rb "+f.replace(".jpg","_tmp.tif")+" "+f.replace(".jpg",".tif"))
