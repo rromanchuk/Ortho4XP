@@ -1442,6 +1442,7 @@ def convert_texture(tile,til_x_left,til_y_top,zoomlevel,provider_code,type='dds'
             conv_cmd=[gdalwarp_cmd,'-of','Gtiff','-co','COMPRESS=JPEG','-s_srs','epsg:3857','-t_srs','epsg:4326','-ts','4096','4096','-rb',tmp_tif_file_name,os.path.join(FNAMES.Geotiff_dir,out_file_name)]
     tentative=0
     while True:
+        print(conv_cmd)
         if not subprocess.call(conv_cmd,stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT):
             break
         tentative+=1
